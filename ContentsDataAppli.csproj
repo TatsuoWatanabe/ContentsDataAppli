@@ -18,20 +18,41 @@
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="app.css" />
-    <Content Include="index.html" />
+    <Content Include="config.xml" />
     <Content Include="web.config" />
+    <Content Include="www\css\index.css" />
+    <Content Include="www\img\logo.png" />
+    <Content Include="www\index.html" />
+    <Content Include="www\js\lib\backbone.js" />
+    <Content Include="www\js\lib\jquery.js" />
+    <Content Include="www\js\lib\require.js" />
+    <Content Include="www\js\lib\underscore.js" />
+    <Content Include="www\js\lib\winjs\css\ui-dark.css" />
+    <Content Include="www\js\lib\winjs\css\ui-light.css" />
+    <Content Include="www\js\lib\winjs\js\base.js" />
+    <Content Include="www\js\lib\winjs\js\en-US\ui.strings.js" />
+    <Content Include="www\js\lib\winjs\js\ui.js" />
+    <Content Include="www\js\lib\winjs\js\WinJS.js" />
+    <TypeScriptCompile Include="www\js\app.ts" />
+    <TypeScriptCompile Include="www\typings\backbone.d.ts" />
+    <TypeScriptCompile Include="www\typings\jquery.d.ts" />
+    <TypeScriptCompile Include="www\typings\tsd.d.ts" />
+    <TypeScriptCompile Include="www\typings\underscore.d.ts" />
+    <TypeScriptCompile Include="www\typings\winjs.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="app.ts" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="hooks\README.md" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
     <None Include="web.Release.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
+    <Content Include="www\js\lib\winjs\fonts\Symbols.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="platforms\" />
+    <Folder Include="plugins\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
@@ -62,6 +83,7 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptModuleKind>amd</TypeScriptModuleKind>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
