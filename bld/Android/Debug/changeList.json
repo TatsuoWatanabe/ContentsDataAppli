@@ -1,0 +1,18 @@
+{
+  "changedFilesIos": [
+    "pages\\pages\\pages.js.map",
+    "pages\\pages\\pages.js",
+    "index.html",
+    "pages\\home.html"
+  ],
+  "deletedFilesIos": [],
+  "addedPluginsIos": [],
+  "deletedPluginsIos": [],
+  "changedFiles": [
+    "pages\\pages\\pages.js.map",
+    "pages\\pages\\pages.js"
+  ],
+  "deletedFiles": [],
+  "addedPlugins": [],
+  "deletedPlugins": []
+}

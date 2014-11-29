@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>listView</title>
+</head>
+<body>
+    <!-- WinJS.UI.ListView -->
+    <div class="fragment" style="margin: 1rem;">
+        <header aria-label="Header content" role="banner">
+            <button data-win-control="WinJS.UI.BackButton"></button>
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle">Welcome to ListView ajax</span>
+            </h1>
+        </header>
+        <section aria-label="Main content" role="main">
+            <!-- Simple template for the ListView instantiation  -->
+            <div class="contentsdataTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
+                <div class="smallListIconTextItem">
+                    <div class="smallListIconTextItem-Detail">
+                        <h6 data-win-bind="textContent: index"></h6>
+                        <h2 data-win-bind="textContent: name"></h2>
+                    </div>
+                </div>
+            </div>
+
+            <div id="contents"
+                 class="win-selectionstylefilled"
+                 data-win-control="WinJS.UI.ListView"
+                 data-win-options="{
+                    itemTemplate    : select('.contentsdataTemplate'),
+                    itemsReorderable: true,
+                    layout          : { type: WinJS.UI.ListLayout }
+                 }"
+            >
+            </div>
+        </section>
+    </div>
+</body>
+</html>
