@@ -3,9 +3,10 @@
         var router = new Router();
         var onRoute = function () {
             Trace.log('Backbone.history route event fired.', 'app.ts');
+
+            RouteManager.initPage();
             WinJS.Navigation.navigate(RouteManager.state.uri).done(function () {
                 Trace.log('WinJS.Navigation.navigate done.', 'app.ts');
-                RouteManager.state.pageModule.initialize();
             });
         };
         Backbone.history.start();

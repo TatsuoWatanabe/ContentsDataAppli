@@ -7,7 +7,7 @@ class RouteManager {
         page      : '',
         id        :  0,
         uri       : '',
-        pageModule: { initialize: () => {} }
+        pageModule: { initialize: (state: typeof RouteManager.state) => {} }
     };
 
     // --- readonly property state ---
@@ -25,6 +25,11 @@ class RouteManager {
         RouteManager.state.uri        = './pages/contents/contents.html';
         RouteManager.state.pageModule = contents;
         Trace.log(RouteManager.state, 'RouteManager.contents()');
+    }
+
+    /** initialize the navigated page. */
+    public static initPage() {
+        RouteManager.state.pageModule.initialize(RouteManager.state);
     }
 }
 

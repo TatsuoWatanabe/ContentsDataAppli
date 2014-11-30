@@ -1,9 +1,12 @@
-﻿define(["require", "exports"], function(require, exports) {
-    function initialize() {
-        // state is?
-        //Trace.log(app.route.state, 'contents.initialize called.');
+﻿define(["require", "exports", '../../scripts/util/Trace'], function(require, exports, Trace) {
+    function initialize(state) {
+        Trace.log(state, 'contents.initialize');
+
         WinJS.UI.Pages.define('./pages/contents/contents.html', {
             ready: function (element, options) {
+                Trace.log(element);
+                $(element).find('h1.titlearea').text('id: ' + state.id);
+
                 WinJS.xhr({
                     url: './pages/contents/data.json',
                     responseType: 'json'

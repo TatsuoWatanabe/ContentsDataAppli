@@ -1,12 +1,15 @@
-﻿import app   = require('scripts/app');
-import Trace = require('scripts/util/Trace');
+﻿import RouteManager   = require('../../scripts/RouteManager');
+import Trace          = require('../../scripts/util/Trace');
 
-export function initialize() {
-    // state is?
-    //Trace.log(app.route.state, 'contents.initialize called.');
+export function initialize(state: typeof RouteManager.state) {
+    Trace.log(state ,'contents.initialize');
 
     WinJS.UI.Pages.define('./pages/contents/contents.html', {
         ready: function (element, options) {
+
+            Trace.log(element);
+            $(element).find('h1.titlearea').text('id: ' + state.id);
+
             WinJS.xhr({
                 url         : './pages/contents/data.json',
                 responseType: 'json'

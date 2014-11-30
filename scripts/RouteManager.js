@@ -17,11 +17,16 @@
             RouteManager.state.pageModule = contents;
             Trace.log(RouteManager.state, 'RouteManager.contents()');
         };
+
+        /** initialize the navigated page. */
+        RouteManager.initPage = function () {
+            RouteManager.state.pageModule.initialize(RouteManager.state);
+        };
         RouteManager.baseState = {
             page: '',
             id: 0,
             uri: '',
-            pageModule: { initialize: function () {
+            pageModule: { initialize: function (state) {
                 } }
         };
 

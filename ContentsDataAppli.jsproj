@@ -151,7 +151,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="index.html" />
-    <TypeScriptCompile Include="pages\home.ts" />
     <TypeScriptCompile Include="pages\contents\contents.ts" />
     <TypeScriptCompile Include="pages\pages\pages.ts" />
     <TypeScriptCompile Include="scripts\app.ts" />
