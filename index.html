@@ -6,26 +6,55 @@
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link href="scripts/lib/winjs/css/ui-dark.css" rel="stylesheet" type="text/css" />
-        <link href="css/index.css" rel="stylesheet" type="text/css" />
-        <script src="scripts/lib/jquery.js"></script>
-        <script src="scripts/lib/underscore.js"></script>
-        <script src="scripts/lib/backbone.js"></script>
-        <script src="scripts/lib/winjs/js/WinJS.js"></script>
-        <script src="scripts/navigator.js"></script>
-        <script src="cordova.js"></script>
-        <script src="scripts/lib/require.js" data-main="scripts/app"></script>
 
         <title>ContentsDataAppli</title>
+
+        <link href="scripts/lib/winjs/css/ui-dark.css" rel="stylesheet" type="text/css" />
+        <link href="css/index.css" rel="stylesheet" type="text/css" />
+        <script src="scripts/lib/require.js"></script>
+        <script>
+            require.config({
+                baseUrl: 'scripts',
+                paths: {
+                    jquery    : 'lib/jquery'    ,
+                    underscore: 'lib/underscore',
+                    backbone  : 'lib/backbone'  ,
+                    WinJS     : 'lib/winjs/js/WinJS'
+                },
+                shim: {
+                    'backbone': {
+                        //These script dependencies should be loaded before loading
+                        //backbone.js
+                        deps: ['underscore', 'jquery'],
+                        //Once loaded, use the global 'Backbone' as the
+                        //module value.
+                        exports: 'Backbone'
+                    },
+                    'jquery'    : { exports: '$'           },
+                    'underscore': { exports: '_'           },
+                    'WinJS'     : { exports: 'WinJS'       }
+                },
+                waitSeconds: 20
+            });
+            window.onload = function () {
+                require(['app', 'WinJS', 'backbone'], function (app) {
+                    app.initialize();
+                });
+            };
+        </script>
+        
+        <style>
+            body { overflow-y: auto; } /* vertical scrollable */
+        </style>
     </head>
     <body>
 
-        <h1>TODO: index.html</h1>
+        <p>TODO: index.html</p>
 
         <!-- PageControlNavigator -->
-        <div id="pageHost"
+        <div id="pageHost" style="height: 100%"
              data-win-control="Application.PageControlNavigator"
-             data-win-options="{ home: './pages/home.html' }">
+             data-win-options="{ home: 'pages/home.html' }">
         </div>
 
     </body>

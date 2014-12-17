@@ -1,22 +1,29 @@
-﻿import Router       = require('Router');
+﻿
+import Router       = require('Router');
 import RouteManager = require('RouteManager');
 import Trace        = require('util/Trace');
+import navigator    = require('navigator');
 
 export function initialize() {
-    var router  = new Router();
+    console.log('initialize');
+    navigator.initialize();
+    // var router  = new Router();
     var onRoute = () => {
         Trace.log('Backbone.history route event fired.', 'app.ts');
 
         RouteManager.initPage();
+        
+
         WinJS.Navigation.navigate(RouteManager.state.uri).done(() => {
             Trace.log('WinJS.Navigation.navigate done.', 'app.ts');
         });
     };
-    Backbone.history.start();
-    Backbone.history.on('route', onRoute);
-    document.addEventListener('deviceready', onDeviceReady, false);
+    //Backbone.history.start();
+    //Backbone.history.on('route', onRoute);
+    //document.addEventListener('deviceready', onDeviceReady, false);
 
     WinJS.UI.processAll().done(() => {
+        Trace.log('WinJS.UI.processAll().done', 'app.ts');
         onRoute();
 
         // WinJS.UI.NavBar
@@ -57,4 +64,4 @@ function onResume() {
     // TODO: This application has been reactivated. Restore application state here.
 }
 
-$(() => initialize());
+Trace.log('app.ts');

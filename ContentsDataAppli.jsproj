@@ -151,10 +151,10 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="index.html" />
-    <TypeScriptCompile Include="pages\contents\contents.ts" />
     <TypeScriptCompile Include="pages\pages\pages.ts" />
     <TypeScriptCompile Include="scripts\app.ts" />
     <TypeScriptCompile Include="scripts\navigator.ts" />
+    <TypeScriptCompile Include="scripts\pages\contents.ts" />
     <TypeScriptCompile Include="scripts\platformOverrides.ts" />
     <Content Include="packages.config" />
     <Content Include="res\icons\android\icon-36-ldpi.png" />

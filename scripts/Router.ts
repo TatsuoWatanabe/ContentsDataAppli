@@ -1,5 +1,6 @@
-﻿import M     = require('RouteManager');
-import Trace = require('util/Trace');
+﻿import Backbone = require('backbone');
+import M        = require('RouteManager');
+import Trace    = require('util/Trace');
 
 class Router extends Backbone.Router {
 

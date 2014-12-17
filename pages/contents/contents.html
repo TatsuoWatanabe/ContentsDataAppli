@@ -2,14 +2,14 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>listView</title>
+    <title>contents</title>
 </head>
 <body>
     <!-- WinJS.UI.ListView -->
     <div class="fragment" style="margin: 1rem;">
         <header aria-label="Header content" role="banner">
             <h1 class="titlearea win-type-ellipsis">
-                <span class="pagetitle">Welcome to ListView ajax</span>
+                <span class="pagetitle">Welcome to contents page.</span>
             </h1>
         </header>
         <section aria-label="Main content" role="main">
@@ -17,13 +17,13 @@
             <div class="contentsdataTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
                 <div class="smallListIconTextItem">
                     <div class="smallListIconTextItem-Detail">
-                        <h6 data-win-bind="textContent: index"></h6>
-                        <h2 data-win-bind="textContent: name"></h2>
+                        <h6 data-win-bind="textContent: position"></h6>
+                        <h2 data-win-bind="textContent: titleName"></h2>
                     </div>
                 </div>
             </div>
 
-            <div id="contents"
+            <div id="contents" 
                  class="win-selectionstylefilled"
                  data-win-control="WinJS.UI.ListView"
                  data-win-options="{
