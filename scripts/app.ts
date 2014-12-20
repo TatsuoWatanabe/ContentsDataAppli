@@ -1,26 +1,23 @@
-﻿
-import Router       = require('Router');
+﻿import Router       = require('Router');
 import RouteManager = require('RouteManager');
 import Trace        = require('util/Trace');
 import navigator    = require('navigator');
 
 export function initialize() {
     console.log('initialize');
+    document.addEventListener('deviceready', onDeviceReady, false);
     navigator.initialize();
-    // var router  = new Router();
+    var router  = new Router();
     var onRoute = () => {
         Trace.log('Backbone.history route event fired.', 'app.ts');
 
         RouteManager.initPage();
-        
-
         WinJS.Navigation.navigate(RouteManager.state.uri).done(() => {
             Trace.log('WinJS.Navigation.navigate done.', 'app.ts');
         });
     };
-    //Backbone.history.start();
-    //Backbone.history.on('route', onRoute);
-    //document.addEventListener('deviceready', onDeviceReady, false);
+    Backbone.history.start();
+    Backbone.history.on('route', onRoute);
 
     WinJS.UI.processAll().done(() => {
         Trace.log('WinJS.UI.processAll().done', 'app.ts');
@@ -49,6 +46,7 @@ export function initialize() {
 }
 
 function onDeviceReady() {
+    Trace.log('device ready.', 'app.ts :: onDeviceReady');
     // Handle the Cordova pause and resume events
     document.addEventListener('pause',  onPause,  false);
     document.addEventListener('resume', onResume, false);
@@ -57,10 +55,12 @@ function onDeviceReady() {
 }
 
 function onPause() {
+    Trace.log('suspended.', 'app.ts :: onPause');
     // TODO: This application has been suspended. Save application state here.
 }
 
 function onResume() {
+    Trace.log('reactivated.', 'app.ts :: onResume');
     // TODO: This application has been reactivated. Restore application state here.
 }
 

@@ -231,6 +231,7 @@
     <TypeScriptCompile Include="scripts\typings\underscore.d.ts" />
     <TypeScriptCompile Include="scripts\typings\winjs.d.ts" />
     <TypeScriptCompile Include="scripts\util\Trace.ts" />
+    <TypeScriptCompile Include="scripts\util\Url.ts" />
   </ItemGroup>
   <PropertyGroup>
     <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>

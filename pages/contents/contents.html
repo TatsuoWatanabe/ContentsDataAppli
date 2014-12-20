@@ -5,33 +5,32 @@
     <title>contents</title>
 </head>
 <body>
-    <!-- WinJS.UI.ListView -->
-    <div class="fragment" style="margin: 1rem;">
+    <!-- WinJS.UI.tView -->
+    <div class="fragmLisent" style="margin: 1rem;">
         <header aria-label="Header content" role="banner">
-            <h1 class="titlearea win-type-ellipsis">
-                <span class="pagetitle">Welcome to contents page.</span>
-            </h1>
+            <h2 class="titlearea win-type-ellipsis">
+                <span class="pagetitle">Lading...</span>
+            </h2>
         </header>
         <section aria-label="Main content" role="main">
             <!-- Simple template for the ListView instantiation  -->
             <div class="contentsdataTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
                 <div class="smallListIconTextItem">
                     <div class="smallListIconTextItem-Detail">
-                        <h6 data-win-bind="textContent: position"></h6>
-                        <h2 data-win-bind="textContent: titleName"></h2>
+                        <p data-win-bind="textContent: position"></p>
+                        <p data-win-bind="textContent: titleName"></p>
                     </div>
                 </div>
             </div>
 
-            <div id="contents" 
+            <div id="contents"
                  class="win-selectionstylefilled"
                  data-win-control="WinJS.UI.ListView"
                  data-win-options="{
                     itemTemplate    : select('.contentsdataTemplate'),
                     itemsReorderable: true,
                     layout          : { type: WinJS.UI.ListLayout }
-                 }"
-            >
+                 }">
             </div>
         </section>
     </div>

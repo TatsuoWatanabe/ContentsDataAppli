@@ -8,8 +8,7 @@ class RouteManager {
         page      : '',
         id        :  0,
         uri       : '',
-        pageModule: { initialize: (state: typeof RouteManager.state) => {} },
-        isEmpty   : { get: () => RouteManager.state.page === '' }
+        pageModule: { initialize: (state: typeof RouteManager.state) => {} }
     };
     public static get state() { return RouteManager._state; }
     // -------------------------------
@@ -28,7 +27,6 @@ class RouteManager {
 
     /** initialize the page. */
     public static initPage() {
-        if (RouteManager.state.isEmpty) { RouteManager.contents(); }
         RouteManager.state.pageModule.initialize(RouteManager.state);
     }
 }
