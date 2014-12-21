@@ -41,6 +41,12 @@ class contents {
             return a.position > b.position ? 1 : -1;
         }).map((item) => {
             item.titleLink = Url.contents(item.titleId);
+
+            // TODO: 作者名配列のレンダリング
+            item.authors = new WinJS.Binding.List(item.authorIds.map((v, i) => {
+                return { description: 'id:' + v + ' array index:' + i }
+            }));
+            
             return item;
         });
     }

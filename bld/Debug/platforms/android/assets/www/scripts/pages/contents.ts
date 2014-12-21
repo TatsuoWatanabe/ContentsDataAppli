@@ -1,40 +1,54 @@
 ﻿import RouteManager   = require('RouteManager');
 import Trace          = require('util/Trace');
+import Url            = require('util/Url');
 
-export function initialize(state: typeof RouteManager.state) {
-    Trace.log(state ,'contents.initialize');
+class contents {
+    public static initialize(state: typeof RouteManager.state) {
+        Trace.log(state, 'contents.initialize');
 
-    WinJS.UI.Pages.define('pages/contents/contents.html', {
-        ready: function (element, options) {
-            var domain = 'http://172.16.192.1:9000';
-            //domain   = 'http://192.168.1.23:9000';
-            domain     = 'http://contentsdataapp.herokuapp.com';
-            var url    = domain + '/api/contents/' + state.id;
+        WinJS.UI.Pages.define(Url.contentsHtml, {
+            ready: function (element, options) {
+                var url = Url.contentsAPI(state.id);
+                Trace.log(url, 'contents.ts UI.Pages.define ready');
+                $.support.cors = true;
+                $.ajax({
+                    type       : 'GET',
+                    url        : url,
+                    dataType   : 'json',
+                    crossDomain: true
+                }).done((json) => {
+                    Trace.log(json, 'response from ' + url);
+                    contents.receiveDataAndRender(json, element);
+                });
 
-            Trace.log(url, 'contents.ts UI.Pages.define ready');
-            // TODO: fix url of api.
+                return this;
+            }
+        });
+    }
 
-            Trace.log(element, 'element');
-            $(element).find('.titlearea').text('id: ' + state.id);
-
-            $.support.cors = true;
-
-            $.ajax({
-                type       : 'GET',
-                url        : url,
-                dataType   : 'json',
-                crossDomain: true
-            }).done((json) => {
-                Trace.log(json, 'response from ' + url);
-                var data = (() => {
-                    var jsonObj = json.sort ? json : JSON.parse(json);
-                    return jsonObj.sort ? jsonObj.sort((a, b) => a.position > b.position ? 1 : -1) : '';
-                })();
-                var listViewCtrl = WinJS.Utilities.query('#contents')[0].winControl;
-                listViewCtrl.itemDataSource = (new WinJS.Binding.List(data)).dataSource;
-            });
-
-            return this;
+    private static receiveDataAndRender(data: Object, element: HTMLElement) {
+        if (data) {
+            var listData     = contents.modifyData(data);
+            var title        = contents.createTitle(listData);
+            var listViewCtrl = $(element).find('#contents')[0].winControl;
+            $(element).find('.titlearea').text(title);
+            listViewCtrl.itemDataSource = (new WinJS.Binding.List(listData)).dataSource;
         }
-    });
+    }
+
+    private static modifyData(data) {
+        return data.sort((a, b) => {
+            return a.position > b.position ? 1 : -1;
+        }).map((item) => {
+            item.titleLink = Url.contents(item.titleId);
+            return item;
+        });
+    }
+
+    private static createTitle(listData) {
+        var item = listData[0];
+        return item.magazineName + ' ' + item.numberNameAndNoString;
+    }
 }
+
+export = contents;

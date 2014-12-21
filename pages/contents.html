@@ -9,32 +9,40 @@
     <div class="fragmLisent" style="margin: 1rem;">
         <header aria-label="Header content" role="banner">
             <h2 class="titlearea win-type-ellipsis">
-                <span class="pagetitle">Lading...</span>
+                <span class="pagetitle">Loading...</span>
             </h2>
         </header>
+
         <section aria-label="Main content" role="main">
-            <!-- Simple template for the ListView instantiation  -->
-            <div class="contentsdataTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
+            <!-- template -->
+            <div class="contentsdataTemplate" data-win-control="WinJS.Binding.Template" style="display: none;">
                 <article style="display:table; width:100%;">
-                    <p style="display:table-cell; width:3rem; font-size: 130%;  text-align:center; vertical-align: middle;" data-win-bind="textContent: position"></p>
+                    <p style="display:table-cell; width:2rem; font-size:130%; text-align:left; vertical-align:middle;" data-win-bind="textContent: position"></p>
                     <div style="display:table-cell;">
-                        <p style="" data-win-bind="textContent: titleName"></p>
+                        <p data-win-bind="textContent: titleName"></p>
                         <a data-win-bind="href: titleLink">
-                            <p style="" data-win-bind="textContent: titleLink"></p>
+                            <p data-win-bind="textContent: titleLink"></p>
                         </a>
+                        <!-- WinJS.UI.Repeater -->
+                        <ul data-win-control="WinJS.UI.Repeater" data-win-bind="winControl.data: authors">
+                            <li data-win-bind="textContent: description"></li>
+                        </ul>
+                        <!-- /WinJS.UI.Repeater -->
                     </div>
                 </article>
             </div>
+            <!-- /template -->
 
+            <!-- WinJS.UI.ListView -->
             <div id="contents"
-                 class="win-selectionstylefilled"
-                 data-win-control="WinJS.UI.ListView"
-                 data-win-options="{
+                data-win-control="WinJS.UI.ListView"
+                data-win-options="{
                     itemTemplate    : select('.contentsdataTemplate'),
-                    itemsReorderable: true,
                     layout          : { type: WinJS.UI.ListLayout }
-                 }">
+                }">
             </div>
+            <!-- /WinJS.UI.ListView -->
+
         </section>
     </div>
 </body>
