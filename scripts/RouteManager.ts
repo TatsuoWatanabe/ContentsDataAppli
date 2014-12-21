@@ -1,4 +1,5 @@
 ﻿import Trace    = require('util/Trace');
+import Url      = require('util/Url');
 import contents = require('pages/contents');
 
 class RouteManager {
@@ -7,7 +8,7 @@ class RouteManager {
     private static _state = {
         page      : '',
         id        :  0,
-        uri       : '',
+        html      : '',
         pageModule: { initialize: (state: typeof RouteManager.state) => {} }
     };
     public static get state() { return RouteManager._state; }
@@ -20,7 +21,7 @@ class RouteManager {
     public static contents(id: string = '') {
         RouteManager.state.page       = RouteManager.pages.contents;
         RouteManager.state.id         = Number(id);
-        RouteManager.state.uri        = 'pages/contents/contents.html';
+        RouteManager.state.html       = Url.contentsHtml;
         RouteManager.state.pageModule = contents;
         Trace.log(RouteManager.state, 'RouteManager.contents()');
     }

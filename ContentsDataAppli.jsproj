@@ -111,9 +111,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="css\index.css" />
+    <Content Include="pages\contents.html" />
     <Content Include="pages\home.html" />
-    <Content Include="pages\contents\data.json" />
-    <Content Include="pages\contents\contents.html" />
     <Content Include="pages\pages\pages.html" />
     <Content Include="pages\pages\pages.js" />
     <Content Include="pages\pages\pages.js.map" />

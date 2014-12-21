@@ -4,15 +4,13 @@ import Trace        = require('util/Trace');
 import navigator    = require('navigator');
 
 export function initialize() {
-    console.log('initialize');
+    Trace.log('app.initialize', 'app.ts');
     document.addEventListener('deviceready', onDeviceReady, false);
     navigator.initialize();
     var router  = new Router();
     var onRoute = () => {
-        Trace.log('Backbone.history route event fired.', 'app.ts');
-
         RouteManager.initPage();
-        WinJS.Navigation.navigate(RouteManager.state.uri).done(() => {
+        WinJS.Navigation.navigate(RouteManager.state.html).done(() => {
             Trace.log('WinJS.Navigation.navigate done.', 'app.ts');
         });
     };
@@ -63,5 +61,3 @@ function onResume() {
     Trace.log('reactivated.', 'app.ts :: onResume');
     // TODO: This application has been reactivated. Restore application state here.
 }
-
-Trace.log('app.ts');

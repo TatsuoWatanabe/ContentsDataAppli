@@ -1,6 +1,6 @@
-﻿import Backbone = require('backbone');
-import M        = require('RouteManager');
-import Trace    = require('util/Trace');
+﻿import Backbone     = require('backbone');
+import RouteManager = require('RouteManager');
+import Trace        = require('util/Trace');
 
 class Router extends Backbone.Router {
 
@@ -11,7 +11,7 @@ class Router extends Backbone.Router {
         };
     }
 
-    public contents(param: string) { M.contents(param); }
+    public contents(param: string) { RouteManager.contents(param); }
 }
 
 export = Router;
